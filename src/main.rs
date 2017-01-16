@@ -59,8 +59,9 @@ fn main() {
         };
 
         if re.is_match(&l) {
+            println!("");
             print_match(&l);
-            println!("--------------------------------------------");
+            continue;
         }
 
         if let &Some(ref e_re) = &example_re {
@@ -84,7 +85,7 @@ fn print_match(line: &str) {
     let ger = ger_eng[0].split(" | ");
     let mut pairs = ger.zip(eng);
     while let Some((g, e)) = pairs.next() {
-        println!("{} – {}", g, e);
+        println!("{0: <50} – {1: <50}", g, e);
 
     }
 
