@@ -2,6 +2,7 @@
 name = "wort"
 version = "0.1.0"
 authors = ["Monte Johnston <johnston.monte@gmail.com>"]
+description = "This is a command line utility to find the English translation of German Words. Use the -a option to include all occurances of the word – in other definitions or in examples."
 
 [dependencies]
 regex = "0.2"
