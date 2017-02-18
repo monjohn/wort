@@ -99,13 +99,22 @@ fn print_match(line: &str, csv: bool) {
     //  let result = String::new();
     if line.is_empty() { return; }
     let ger_eng: Vec<&str> = line.trim().split("::").collect();
+
     let eng = ger_eng[1].split(" | ");
     let ger = ger_eng[0].split(" | ");
     let mut pairs = ger.zip(eng);
+    let mut subsequent = false;
     while let Some((g, e)) = pairs.next() {
         if csv {
             println!("{}, {}", g.trim(), e.trim());
         } else {
+            let g = if subsequent {
+                format!("– {}", g)
+            } else {
+                subsequent = true;
+                g.to_string()
+            };
+
             println!("{0: <50} – {1: <50}", g, e);
         }
     }
@@ -117,5 +126,6 @@ fn print_usage(program: &str, opts: Options) {
     print!("{}", opts.usage(&brief));
 }
 
-
-// Prints each argument on a separate line
+// fn denote_sub(ger: &str, first: bool) -> String {
+//     if first {format!("– {}", ger)} else {ger.to_string()}
+// }
