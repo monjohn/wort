@@ -76,7 +76,6 @@ fn main() {
         };
 
         if re.is_match(&l) {
-            println!("");
             print_match(&l, csv);
             continue;
         }
@@ -98,13 +97,14 @@ fn main() {
 
 fn print_match(line: &str, csv: bool) {
     //  let result = String::new();
-    let ger_eng: Vec<&str> = line.split("::").collect();
+    if line.is_empty() { return; }
+    let ger_eng: Vec<&str> = line.trim().split("::").collect();
     let eng = ger_eng[1].split(" | ");
     let ger = ger_eng[0].split(" | ");
     let mut pairs = ger.zip(eng);
     while let Some((g, e)) = pairs.next() {
         if csv {
-            println!("{},{}", g, e);
+            println!("{}, {}", g.trim(), e.trim());
         } else {
             println!("{0: <50} – {1: <50}", g, e);
         }
