@@ -26,6 +26,12 @@ cp target/release/wort ~/.bin/
 wort mahnen
 ```
 
+If you want to search for more than one word, such as a reflexive verb, you must put it in quotes.
+
+```sh
+wort "sich vertragen"
+```
+
 ## Options
 ```sh
 Usage: wort FILE [options]
