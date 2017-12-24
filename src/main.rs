@@ -16,7 +16,7 @@ use time::PreciseTime;
 
 
 fn main() {
-    let dictionary = "/Users/monte/.bin/de-en.txt";
+    let dictionary = "/Users/montejohnston/bin/de-en.txt";
 
     // Parsing args
     let args: Vec<String> = env::args().collect();
@@ -26,9 +26,9 @@ fn main() {
                  "all",
                  "include all occurances of word, not just definition");
     opts.optflag("h", "help", "print this help menu");
-    opts.optflag("m",
-                 "more",
-                 "returns occurrences after the first within a definition");
+    opts.optflag("u",
+                 "usage",
+                 "shows different usages of the word after the definition");
     opts.optflag("o", "out", "output suitable for appending to a csv");
     let matches = match opts.parse(&args[2..]) {
         Ok(m) => m,
